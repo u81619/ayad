@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>واجهة المحل</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
     * {
@@ -15,76 +15,8 @@
     }
 
     body {
-      background-color: #000;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .header {
-      margin-bottom: 40px;
-    }
-
-    .store-title {
-      font-size: 32px;
-      margin-bottom: 15px;
-      background: linear-gradient(90deg, red, blue, green, yellow, cyan);
-      background-size: 300% 300%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: glowtext 5s linear infinite;
-    }
-
-    .store-description {
-      font-size: 18px;
-      color: #ccc;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .contact-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      width: 100%;
-      max-width: 350px;
-    }
-
-    .rgb-button {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 14px 20px;
-      background: #111;
-      border: none;
-      border-radius: 15px;
-      font-size: 20px;
-      font-weight: bold;
-      color: white;
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>واجهة المحل</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <style>
-    * {
       margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Cairo', sans-serif;
-    }
-
-    body {
+      overflow: hidden;
       background: #0d0d0d;
       color: white;
       display: flex;
@@ -92,7 +24,57 @@
       justify-content: center;
       min-height: 100vh;
       padding: 20px;
+      position: relative;
+      z-index: 0;
     }
+
+    /* خلفية النجوم */
+    #stars, #stars2, #stars3 {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background: transparent;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    #stars {
+      background: transparent url('https://raw.githubusercontent.com/jasonlong/canvas-nest/master/images/star.png') repeat;
+      background-size: 20px 20px;
+      animation: moveStars 120s linear infinite;
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    #stars2 {
+      background: transparent url('https://raw.githubusercontent.com/jasonlong/canvas-nest/master/images/star.png') repeat;
+      background-size: 40px 40px;
+      animation: moveStarsReverse 200s linear infinite;
+      opacity: 0.3;
+      z-index: 0;
+    }
+
+    #stars3 {
+      background: transparent url('https://raw.githubusercontent.com/jasonlong/canvas-nest/master/images/star.png') repeat;
+      background-size: 60px 60px;
+      animation: moveStars 300s linear infinite;
+      opacity: 0.15;
+      z-index: 0;
+    }
+
+    @keyframes moveStars {
+      from { background-position: 0 0; }
+      to { background-position: -10000px 10000px; }
+    }
+
+    @keyframes moveStarsReverse {
+      from { background-position: 0 0; }
+      to { background-position: 10000px -10000px; }
+    }
+
 
     .card-glow {
       position: relative;
@@ -102,8 +84,9 @@
       text-align: center;
       max-width: 400px;
       width: 100%;
-      z-index: 1;
+      z-index: 10;
       overflow: hidden;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     }
 
     .card-glow::before {
@@ -153,57 +136,50 @@
       margin-bottom: 25px;
     }
 
-    .contact-buttons {
+    .contact-icons {
       display: flex;
-      flex-direction: column;
-      gap: 15px;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
     }
 
-    .rgb-button {
-      position: relative;
+    .icon-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding: 12px 20px;
-      background: #111;
-      border: none;
-      border-radius: 15px;
-      font-size: 18px;
-      font-weight: bold;
+      font-size: 28px;
       color: white;
-      cursor: pointer;
-      overflow: hidden;
+      text-decoration: none;
+      position: relative;
       z-index: 1;
       transition: transform 0.3s ease;
     }
 
-    .rgb-button i {
-      font-size: 22px;
-    }
-
-    .rgb-button::before {
+    .icon-btn::before {
       content: "";
       position: absolute;
-      top: -3px;
-      left: -3px;
-      right: -3px;
-      bottom: -3px;
+      top: -4px;
+      left: -4px;
+      right: -4px;
+      bottom: -4px;
       background: linear-gradient(45deg, red, green, blue, cyan, magenta, yellow);
       background-size: 400%;
-      z-index: -1;
       filter: blur(6px);
+      z-index: -1;
+      border-radius: 50%;
       animation: rgbglow 5s linear infinite;
-      border-radius: 15px;
     }
 
-    .rgb-button:hover {
-      transform: scale(1.05);
+    .icon-btn:hover {
+      transform: scale(1.1);
     }
 
-    a {
-      text-decoration: none;
-    }
+    .whatsapp { background-color: #25D366; }
+    .facebook { background-color: #1877F2; }
+    .tiktok   { background-color: #000; }
 
     @keyframes rgbglow {
       0% { background-position: 0% 50%; }
@@ -220,34 +196,33 @@
 </head>
 <body>
 
+  <!-- طبقات النجوم -->
+  <div id="stars"></div>
+  <div id="stars2"></div>
+  <div id="stars3"></div>
+
   <!-- 🎵 صوت ترحيبي -->
   <audio autoplay>
-    <source src="https://cdn.pixabay.com/download/audio/2023/03/28/audio_0ce71d38e3.mp3?filename=warm-welcome-144051.mp3" type="audio/mpeg">
-    المتصفح لا يدعم تشغيل الصوت.
+    <source src="https://cdn.pixabay.com/download/audio/2023/03/28/audio_0ce71d38e3.mp3?filename=warm-welcome-144051.mp3" type="audio/mpeg" />
   </audio>
 
   <div class="card-glow">
-    <img class="logo" src="https://via.placeholder.com/150" alt="شعار المحل">
-
+    <img class="logo" src="https://via.placeholder.com/150" alt="شعار المحل" />
     <h1 class="store-title">محل بغداد للالكترونيات</h1>
-
     <p class="store-address">بغداد - شارع الصناعة - مقابل مول النخيل</p>
-
     <p class="store-description">
       نوفر لكم أحدث الأجهزة والإكسسوارات الأصلية مع ضمان حقيقي وخدمة ممتازة.
     </p>
 
-    <div class="contact-buttons">
-      <a href="https://wa.me/1234567890" target="_blank">
-        <button class="rgb-button"><i class="fab fa-whatsapp"></i> واتساب</button>
+    <div class="contact-icons">
+      <a href="https://wa.me/1234567890" target="_blank" class="icon-btn whatsapp" aria-label="واتساب">
+        <i class="fab fa-whatsapp"></i>
       </a>
-
-      <a href="https://facebook.com/yourpage" target="_blank">
-        <button class="rgb-button"><i class="fab fa-facebook"></i> فيسبوك</button>
+      <a href="https://facebook.com/yourpage" target="_blank" class="icon-btn facebook" aria-label="فيسبوك">
+        <i class="fab fa-facebook-f"></i>
       </a>
-
-      <a href="https://www.tiktok.com/@yourpage" target="_blank">
-        <button class="rgb-button"><i class="fab fa-tiktok"></i> تيك توك</button>
+      <a href="https://www.tiktok.com/@yourpage" target="_blank" class="icon-btn tiktok" aria-label="تيك توك">
+        <i class="fab fa-tiktok"></i>
       </a>
     </div>
   </div>
