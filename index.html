@@ -68,6 +68,110 @@
       font-size: 20px;
       font-weight: bold;
       color: white;
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>واجهة المحل</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      background: #0d0d0d;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .card-glow {
+      position: relative;
+      background: #111;
+      border-radius: 25px;
+      padding: 30px 20px;
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .card-glow::before {
+      content: "";
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      background: linear-gradient(45deg, red, blue, green, yellow, magenta, cyan);
+      background-size: 400%;
+      filter: blur(8px);
+      z-index: -1;
+      animation: rgbglow 6s linear infinite;
+      border-radius: 30px;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      margin-bottom: 20px;
+    }
+
+    .store-title {
+      font-size: 28px;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, red, cyan, yellow, magenta, lime);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glowtext 5s linear infinite;
+    }
+
+    .store-address {
+      font-size: 16px;
+      color: #ffc107;
+      margin-bottom: 10px;
+    }
+
+    .store-description {
+      font-size: 16px;
+      color: #ccc;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .contact-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .rgb-button {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 20px;
+      background: #111;
+      border: none;
+      border-radius: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
       cursor: pointer;
       overflow: hidden;
       z-index: 1;
@@ -75,7 +179,7 @@
     }
 
     .rgb-button i {
-      font-size: 24px;
+      font-size: 22px;
     }
 
     .rgb-button::before {
@@ -97,6 +201,10 @@
       transform: scale(1.05);
     }
 
+    a {
+      text-decoration: none;
+    }
+
     @keyframes rgbglow {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -108,31 +216,40 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-
-    a {
-      text-decoration: none;
-    }
   </style>
 </head>
 <body>
 
-  <div class="header">
+  <!-- 🎵 صوت ترحيبي -->
+  <audio autoplay>
+    <source src="https://cdn.pixabay.com/download/audio/2023/03/28/audio_0ce71d38e3.mp3?filename=warm-welcome-144051.mp3" type="audio/mpeg">
+    المتصفح لا يدعم تشغيل الصوت.
+  </audio>
+
+  <div class="card-glow">
+    <img class="logo" src="https://via.placeholder.com/150" alt="شعار المحل">
+
     <h1 class="store-title">محل بغداد للالكترونيات</h1>
-    <p class="store-description">نوفر لكم أحدث الأجهزة والأكسسوارات بأسعار مميزة وخدمة ممتازة. موقعنا في بغداد - شارع الصناعة.</p>
-  </div>
 
-  <div class="contact-buttons">
-    <a href="https://wa.me/1234567890" target="_blank">
-      <button class="rgb-button"><i class="fab fa-whatsapp"></i> واتساب</button>
-    </a>
+    <p class="store-address">بغداد - شارع الصناعة - مقابل مول النخيل</p>
 
-    <a href="https://facebook.com/yourpage" target="_blank">
-      <button class="rgb-button"><i class="fab fa-facebook"></i> فيسبوك</button>
-    </a>
+    <p class="store-description">
+      نوفر لكم أحدث الأجهزة والإكسسوارات الأصلية مع ضمان حقيقي وخدمة ممتازة.
+    </p>
 
-    <a href="https://www.tiktok.com/@yourpage" target="_blank">
-      <button class="rgb-button"><i class="fab fa-tiktok"></i> تيك توك</button>
-    </a>
+    <div class="contact-buttons">
+      <a href="https://wa.me/1234567890" target="_blank">
+        <button class="rgb-button"><i class="fab fa-whatsapp"></i> واتساب</button>
+      </a>
+
+      <a href="https://facebook.com/yourpage" target="_blank">
+        <button class="rgb-button"><i class="fab fa-facebook"></i> فيسبوك</button>
+      </a>
+
+      <a href="https://www.tiktok.com/@yourpage" target="_blank">
+        <button class="rgb-button"><i class="fab fa-tiktok"></i> تيك توك</button>
+      </a>
+    </div>
   </div>
 
 </body>
